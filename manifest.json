@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Start",
   "version": "1.0",
-  "description": "A custom start page for Chromium browsers.",
+  "description": "A minimal and customizable new tab extension for your browser",
   "chrome_url_overrides": {
     "newtab": "./src/index.html"
   },
