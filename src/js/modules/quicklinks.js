@@ -1,12 +1,11 @@
-
-import { DOM } from './dom.js';
-import { openModal, closeModal } from './modal.js';
+import { DOM } from "./dom.js";
+import { openModal, closeModal } from "./modal.js";
 
 let customFaviconData = null;
 let sortable;
 
 export const renderQuickLinks = (editMode = false) => {
-  const links = JSON.parse(localStorage.getItem("quicklinks")) || [];
+  let links = JSON.parse(localStorage.getItem("quicklinks")) || [];
   DOM.quicklinksContainer.innerHTML = "";
 
   links.forEach((link, index) => {
@@ -107,8 +106,7 @@ export const initQuicklinks = () => {
   DOM.quicklinksWrapper.classList.toggle("hidden", !quicklinksEnabled);
   DOM.quicklinksDetails.classList.toggle("hidden", !quicklinksEnabled);
 
-  const savedPosition =
-    localStorage.getItem("quicklinksPosition") || "center";
+  const savedPosition = localStorage.getItem("quicklinksPosition") || "center";
   applyQuicklinksPosition(savedPosition);
 
   if (quicklinksEnabled) renderQuickLinks();
@@ -220,8 +218,7 @@ export const initQuicklinks = () => {
     preventOnFilter: true,
     disabled: true, // Disabled by default
     onEnd: (evt) => {
-      const links =
-        JSON.parse(localStorage.getItem("quicklinks")) || [];
+      const links = JSON.parse(localStorage.getItem("quicklinks")) || [];
       const [reorderedItem] = links.splice(evt.oldIndex, 1);
       links.splice(evt.newIndex, 0, reorderedItem);
       localStorage.setItem("quicklinks", JSON.stringify(links));
