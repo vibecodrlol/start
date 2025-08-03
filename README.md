@@ -2,6 +2,8 @@
 
 A minimal and customizable new tab page for your browser.
 
+![Screenshot](assets/screenshot.jpeg)
+
 ## Features
 - Clean and simple design
 - Minimalist or customizable
