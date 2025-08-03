@@ -134,10 +134,15 @@ export const initQuicklinks = () => {
     });
   });
 
+
   DOM.editLinksBtn.addEventListener("click", () => {
     DOM.body.classList.add("edit-mode");
     DOM.settingsIcon.classList.add("hidden");
     DOM.exitEditModeIcon.classList.remove("hidden");
+    // Blur background overlay in edit mode
+    if (DOM.backgroundOverlay) {
+      DOM.backgroundOverlay.classList.add("blurred");
+    }
     sortable.option("disabled", false);
     renderQuickLinks(true);
     closeModal(DOM.settingsOverlay, DOM.settingsMenu);
@@ -147,6 +152,10 @@ export const initQuicklinks = () => {
     DOM.body.classList.remove("edit-mode");
     DOM.settingsIcon.classList.remove("hidden");
     DOM.exitEditModeIcon.classList.add("hidden");
+    // Remove blur from background overlay when exiting edit mode
+    if (DOM.backgroundOverlay) {
+      DOM.backgroundOverlay.classList.remove("blurred");
+    }
     sortable.option("disabled", true);
     renderQuickLinks(false);
   });
